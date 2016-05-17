@@ -13,10 +13,10 @@ local function check_member_autorealm(cb_extra, success, result)
         group_type = 'Realm',
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
+          lock_name = '🔒',
           lock_photo = 'no',
           lock_member = 'no',
-          flood = 'yes'
+          flood = '🔒'
         }
       }
       save_data(_config.moderation.data, data)
@@ -43,10 +43,10 @@ local function check_member_realm_add(cb_extra, success, result)
         group_type = 'Realm',
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
+          lock_name = '🔒',
           lock_photo = 'no',
           lock_member = 'no',
-          flood = 'yes'
+          flood = '🔒'
         }
       }
       save_data(_config.moderation.data, data)
@@ -75,10 +75,10 @@ function check_member_group(cb_extra, success, result)
         set_owner = member_id ,
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
+          lock_name = '🔒',
           lock_photo = 'no',
           lock_member = 'no',
-          flood = 'yes',
+          flood = '🔒',
         }
       }
       save_data(_config.moderation.data, data)
@@ -107,10 +107,10 @@ local function check_member_modadd(cb_extra, success, result)
         set_owner = member_id ,
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
+          lock_name = '🔒',
           lock_photo = 'no',
           lock_member = 'no',
-          flood = 'yes',
+          flood = '🔒',
         }
       }
       save_data(_config.moderation.data, data)
@@ -195,7 +195,7 @@ local function show_group_settingsmod(msg, data, target)
         	NUM_MSG_MAX = 5
       	end
     end
-    local bots_protection = "Yes"
+    local bots_protection = "🔒"
     if data[tostring(msg.to.id)]['settings']['lock_bots'] then
     	bots_protection = data[tostring(msg.to.id)]['settings']['lock_bots']
    	end
@@ -288,10 +288,10 @@ local function lock_group_namemod(msg, data, target)
   end
   local group_name_set = data[tostring(target)]['settings']['set_name']
   local group_name_lock = data[tostring(target)]['settings']['lock_name']
-  if group_name_lock == 'yes' then
+  if group_name_lock == '🔒' then
     return 'Group name is already locked'
   else
-    data[tostring(target)]['settings']['lock_name'] = 'yes'
+    data[tostring(target)]['settings']['lock_name'] = '🔒'
     save_data(_config.moderation.data, data)
     rename_chat('chat#id'..target, group_name_set, ok_cb, false)
     return 'Group name has been locked'
